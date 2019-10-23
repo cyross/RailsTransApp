@@ -36,14 +36,14 @@
             %table.table.table-striped.table-bordered
                 %thead.thead-dark
                     %tr
-                        %th.text-center.align-middle 詳細ボタン
+                        %th.text-center.align-middle (ダイジェスト)
                         %th.text-center.align-middle 翻訳前
                         %th.text-center.align-middle 翻訳後
                 %tbody.table-striped
                     - @items.each do |item|
                         %tr
                             %td.text-center.align-middle
-                                %button.btn.btn-primary.btn-lg.btn-block{type: "button", name: "detail_button", data:{ id: "#{item[:id]}" } } 詳細
+                                %button.btn.btn-info.btn-lg.btn-block{type: "button", name: "detail_button", data:{ id: "#{item[:id]}" } } 詳細
                             %td.text-center.align-middle
                                 = item[:source]
                             %td.text-center.align-middle

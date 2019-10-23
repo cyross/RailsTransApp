@@ -11,6 +11,7 @@ interface ITransStates extends Readonly<{
     target: string
 }>{}
 
+// stateにReadonlyを付加
 class Translation extends React.Component<{}, ITransStates> {
     constructor(props) {
         super(props)
