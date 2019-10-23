@@ -1,0 +1,72 @@
+%div.container-fluid
+    %hr
+    %div.row
+        %div.col-sm
+        %div.col-sm
+            %h1.display-1 翻訳アプリ
+        %div.col-sm
+    %div.row
+        %div.row#success_message_area{ style: "display: none;" }
+            %div.alert.alert-success{ role: "alert" }
+                %span#success_message &nbsp;
+    %div.row
+        %div.row#error_message_area{ style: "display: none;" }
+            %div.alert.alert-danger{ role: "alert" }
+                %span#error_message &nbsp;
+    %hr
+    %div.row
+    %div.row
+        %div.col-2.col-md
+        %div.col-8.col-md
+            %button.btn.btn-primary.btn-lg.btn-block#newbutton{ type: "button", data:{toggle: "modal", target: "#addTranslateModal"}  } 新規追加
+        %div.col-2.col-md
+    %hr
+    %div.row
+        %div.col-2.col-md
+        %div.col-8.col-md
+            %div.center-block
+                %p.text-center 翻訳リスト
+        %div.col-2.col-md
+    %div.row
+    - if @items.length == 0
+        %div.alert.alert-warning{ role: "alert" } 翻訳がまだ登録されていません
+    - else
+        %div.col-2.col-md
+        %div.col-8.col-md
+            %table.table.table-striped.table-bordered
+                %thead.thead-dark
+                    %tr
+                        %th.text-center.align-middle 詳細ボタン
+                        %th.text-center.align-middle 翻訳前
+                        %th.text-center.align-middle 翻訳後
+                %tbody.table-striped
+                    - @items.each do |item|
+                        %tr
+                            %td.text-center.align-middle
+                                %button.btn.btn-primary.btn-lg.btn-block{type: "button", name: "detail_button", data:{ id: "#{item[:id]}" } } 詳細
+                            %td.text-center.align-middle
+                                = item[:source]
+                            %td.text-center.align-middle
+                                = item[:translated]
+        %div.col-2.col-md
+    %hr
+    %dow.row
+        %div.col-2.col-md
+        %div#translation_detail
+        %div.col-2.col-md
+
+%div.modal.fade#addTranslateModal{ role: "dialog", tabindex: "-1", aria: {labelledby: "addTranslateModalLabel", hidden: "true"} }
+    %div.modal-dialog.modal-xl{ role: "document" }
+        %div.modal-content
+            %div.modal-header
+                %h5.modal-title#addTranslateModalLabel 追加する英語の記載
+                %button.close{type:"button", data:{dismiss: "modal"}, aria: {label: "Close"}}
+                    %span{ aria: { hidden: "true"}} &times;
+            %div.modal-body
+                %p 翻訳したい文章・単語を入力してください(英語)
+                %textarea#newtext{ name: "newtext", rows: "8", cols: "80"}
+            %div.modal-footer
+                %button.btn.btn-secondary{type: "button", data:{dismiss: "modal"}} 戻る
+                %button.btn.btn-primary#submit_create{type: "button"} 翻訳して保存
+
+= javascript_pack_tag 'translation'

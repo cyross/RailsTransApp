@@ -43,11 +43,10 @@ group :development do
   # for testing
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
+  gem 'foreman'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'bootstrap-sass'
-
-gem 'react-rails'
+gem 'haml-rails'

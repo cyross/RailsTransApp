@@ -10,6 +10,7 @@ services:
     - ./docker/web/work:/work
     ports:
     - "3000:3000"
+    - "3035:3035"
     - "8080:8080"
     - "80:80"
     tty: true
